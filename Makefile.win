@@ -1,0 +1,43 @@
+# Project: pipeline prueba
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = analysis_utils.o csv_utils.o EnvLoader.o SFTPClient.o student_utils.o main.o
+LINKOBJ  = analysis_utils.o csv_utils.o EnvLoader.o SFTPClient.o student_utils.o main.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "pipeline prueba.exe"
+CXXFLAGS = $(CXXINCS) -std=c++11 -std=c++11
+CFLAGS   = $(INCS) -std=c++11 -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+analysis_utils.o: analysis_utils.cpp
+	$(CPP) -c analysis_utils.cpp -o analysis_utils.o $(CXXFLAGS)
+
+csv_utils.o: csv_utils.cpp
+	$(CPP) -c csv_utils.cpp -o csv_utils.o $(CXXFLAGS)
+
+EnvLoader.o: EnvLoader.cpp
+	$(CPP) -c EnvLoader.cpp -o EnvLoader.o $(CXXFLAGS)
+
+SFTPClient.o: SFTPClient.cpp
+	$(CPP) -c SFTPClient.cpp -o SFTPClient.o $(CXXFLAGS)
+
+student_utils.o: student_utils.cpp
+	$(CPP) -c student_utils.cpp -o student_utils.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
